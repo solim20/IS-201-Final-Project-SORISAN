@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crochet Art</title>
+
+    <style>
+        /* === GLOBAL PAGE STYLE === */
+        body {
+            background-color: #ffd6e8;              /* soft pink */
+            background-image: repeating-linear-gradient(
+                45deg,
+                #ffd6e8 0px,
+                #ffd6e8 20px,
+                #ffb3c6 20px,
+                #ffb3c6 40px
+            );
+            font-family: "Trebuchet MS", sans-serif;
+            color: #6b0f1a;                          /* dark rosy text */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #b30059;                          /* deep pink heading */
+            text-align: center;
+        }
+
+        /* === DIV #1: MAIN CONTENT BLOCK === */
+        .content-box {
+            background: #ffe6f2;
+            border: 2px solid #ff99bb;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 85%;
+            box-shadow: 0px 0px 10px #ff9ec7;
+        }
+
+        /* === DIV #2: IMAGE GALLERY === */
+        .gallery {
+            background: #fff0f6;
+            border: 2px dashed #ff80a6;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-around;
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #ff6699;
+        }
+
+        /* === DIV #3: SPECIAL HIGHLIGHT BOX === */
+        .highlight-box {
+            background: #ffd1e8;
+            border-left: 6px solid #ff4d88;
+            padding: 15px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* Link + anchor styling */
+        a {
+            color: #cc0066;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ff1a8c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="top">The Art of Crochet</h1>
+
+    <div class="content-box">
+        <p>
+            Crochet is a beautiful craft that blends creativity, patience, and rhythmic movement. 
+            Each stitch builds upon the last, forming patterns that reflect both tradition and personal expression. 
+            The process is meditative and soothing, making it a favorite hobby for artists and beginners alike.
+        </p>
+
+        <p>
+            Over time, crochet has evolved into a modern art form, producing clothing, accessories, sculptures, 
+            and elaborate home décor. What makes crochet special is its versatility—one hook, one strand of yarn, 
+            and endless possibilities for texture and design.
+        </p>
+
+        <p>
+            Many crocheters begin with a few foundational stitches, gradually combining them into more complex motifs. 
+            Below is a list of some of the most popular stitches:
+        </p>
+
+        <ol>
+            <li>Beginner Stitches
+                <ul>
+                    <li>Chain Stitch (CH)</li>
+                    <li>Single Crochet (SC)</li>
+                    <li>Half Double Crochet (HDC)</li>
+                </ul>
+            </li>
+            <li>Intermediate Stitches
+                <ul>
+                    <li>Double Crochet (DC)</li>
+                    <li>Treble Crochet (TR)</li>
+                    <li>Shell Stitch</li>
+                </ul>
+            </li>
+            <li>Decorative Stitches
+                <ul>
+                    <li>Bobble Stitch</li>
+                    <li>V Stitch</li>
+                    <li>Granny Cluster</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Highlight Box -->
+    <div class="highlight-box">
+        Crochet brings warmth—not just through yarn, but through the love and time woven into every piece.
+    </div>
+
+    <!-- Image Gallery -->
+    <h2>Beautiful Crochet Creations</h2>
+    <div class="gallery">
+        <img src="images/crochet blanket.jpg" alt="Crochet Blanket">
+        <img src="images/bunny crochet.jpeg" alt="Crochet Bunny">
+        <img src="images/strawberry hat.webp" alt="Strawberry Hat">
+    </div>
+
+    <!-- YouTube Embed -->
+    <h2>Learn the Basics of Crochet</h2>
+    <div class="content-box">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/aAxGTnVNJiE"
+            title="Crochet Basics Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Anchor Link -->
+    <p style="text-align:center;">
+        <a href="#top">Back to Top</a>
+    </p>
+
+</body>
+</html>
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #ffeef7;
+    color: #333;
+}
+
+/* Layout */
+.resume-container {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: #ffcce6;
+    padding: 20px;
+    text-align: center;
+    border-right: 3px solid #ffb3dd;
+}
+
+.headshot {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Back button */
+.home-button {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 8px 12px;
+    background: #ff99d8;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.home-button:hover {
+    background: #ff86cf;
+}
+
+/* Contact icons */
+.contact-icons {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.icon-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: purple;
+}
+
+.icon-text {
+    font-size: 15px;
+    color: #4a0066;
+    font-weight: bold;
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    padding: 30px 50px;
+}
+
+.name {
+    font-size: 36px;
+    color: #990066;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #cc0088;
+    border-bottom: 2px solid #ffb3dd;
+    padding-bottom: 5px;
+}
+
+h3 {
+    color: #990066;
+    margin-bottom: 2px;
+}
+
+ul {
+    margin-top: 5px;
+}
+body {
+    background: #e6d4ff; /* purple behind everything */
+}
+
+.main-content {
+    background: white;
+    border-radius: 14px;
+    padding: 30px 50px;
+}
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #e8ddff; /* lavender purple background */
+    color: #333;
+}
+
+/* Keep the resume section white */
+.resume-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff; /* stays white */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}

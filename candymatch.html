@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candy Crush Memory Game</title>
+
+<!-- Google Font for playful style -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background: 
+            repeating-linear-gradient(
+                45deg,
+                #ffb3c6 0px,
+                #ffb3c6 40px,
+                #ffe6f2 40px,
+                #ffe6f2 80px
+            ),
+            radial-gradient(circle at 20% 20%, #fffa90, #ffb3c6),
+            radial-gradient(circle at 80% 80%, #a6eaff, #ff80a6);
+        background-blend-mode: screen, overlay;
+        font-family: 'Baloo 2', cursive;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        color: #6b0f1a;
+        min-height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #ff4da6;
+        text-shadow: 2px 2px #ffd6e8;
+    }
+
+    .game-board {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        grid-gap: 15px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 100px;
+        height: 100px;
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .card.flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+    }
+
+    .card-front {
+        background-color: #fff0f6;
+        border: 2px solid #ff80a6;
+    }
+
+    .card-back {
+        background-color: #ff4da6;
+        transform: rotateY(180deg);
+        border: 2px solid #ff80a6;
+        color: white;
+        font-size: 2rem;
+    }
+
+    .message {
+        margin-top: 20px;
+        font-size: 1.2rem;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 12px;
+        background-color: #ff4da6;
+        color: white;
+        cursor: pointer;
+        font-family: 'Baloo 2', cursive;
+    }
+
+    button:hover {
+        background-color: #ff1a8c;
+    }
+</style>
+</head>
+<body>
+
+<h1>Candy Crush Memory Game</h1>
+
+<div class="game-board" id="game-board">
+    <!-- Cards will be generated here -->
+</div>
+
+<div class="message" id="message"></div>
+<button id="restart">Restart Game</button>
+
+<script>
+// Candy emojis for simplicity
+const candies = ["🍬","🍭","🍫","🍩","🍪","🍬","🍭","🍫"];
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let matches = 0;
+
+const board = document.getElementById("game-board");
+const message = document.getElementById("message");
+
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function createBoard() {
+    const shuffled = shuffle([...candies, ...candies]); // duplicate candies
+    board.innerHTML = "";
+    shuffled.forEach((candy) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.candy = candy;
+
+        card.innerHTML = `
+            <div class="card-inner">
+                <div class="card-front"></div>
+                <div class="card-back">${candy}</div>
+            </div>
+        `;
+
+        card.addEventListener("click", flipCard);
+        board.appendChild(card);
+    });
+}
+
+function flipCard() {
+    if (lockBoard) return;
+    if (this === firstCard) return;
+
+    this.classList.add("flipped");
+
+    if (!firstCard) {
+        firstCard = this;
+        return;
+    }
+
+    secondCard = this;
+    checkForMatch();
+}
+
+function checkForMatch() {
+    const isMatch = firstCard.dataset.candy === secondCard.dataset.candy;
+    if (isMatch) {
+        matches++;
+        resetTurn();
+        if (matches === candies.length) {
+            message.textContent = "🎉 Congratulations! You matched all candies!";
+        }
+    } else {
+        lockBoard = true;
+        setTimeout(() => {
+            firstCard.classList.remove("flipped");
+            secondCard.classList.remove("flipped");
+            resetTurn();
+        }, 1000);
+    }
+}
+
+function resetTurn() {
+    [firstCard, secondCard] = [null, null];
+    lockBoard = false;
+}
+
+document.getElementById("restart").addEventListener("click", () => {
+    matches = 0;
+    message.textContent = "";
+    createBoard();
+});
+
+// Initialize game
+createBoard();
+</script>
+
+<!-- Link to Crochet page -->
+<p style="text-align:center; margin-top:30px; font-size:1.2rem;">
+    <a href="index.html" style="color:#ff4da6; font-weight:bold; text-decoration:none;"
+       onmouseover="this.style.color='#ff1a8c';" 
+       onmouseout="this.style.color='#ff4da6';">
+        For More Inspiration
+    </a>
+</p>
+
+
+
+</body>
+</html>
+
